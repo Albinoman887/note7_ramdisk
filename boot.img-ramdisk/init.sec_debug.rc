@@ -1,0 +1,7 @@
+on property:persist.sec_debug.coredump=1
+    # set RLIMIT_CORE to allow coredump
+    mkdir /data/log/core 0775 root root
+    setrlimit 4 -1 -1 
+    write /proc/sys/kernel/core_pattern "|/system/bin/corehelper.sh %p_%t_%e"
+on property:init.svc.debuggerd=running
+    setprop persist.sec_debug.coredump 1
