@@ -3,18 +3,8 @@
 # IMPORTANT: Do not create world writable files or directories.
 # This is a common source of Android security bugs.
 #
-on init
-#carrier
-    mkdir /carrier 0771 system system
 
 on fs
-#Carrier partition
-    wait /dev/block/bootdevice/by-name/carrier
-    check_fs /dev/block/bootdevice/by-name/carrier ext4
-    mount ext4 /dev/block/bootdevice/by-name/carrier /carrier nosuid nodev barrier=1
-    chown system system /carrier
-    chmod 0771 /carrier
-
 #For Absolute Persistence Partition
     mkdir /persdata 0755 system system
     mkdir /persdata/absolute 0750 system system
@@ -92,14 +82,14 @@ service irisd /system/bin/irisd
     class late_start
     user system
     group system
-        
+
 # IMS stack for IMS
 service imsd /system/bin/imsd
     class main
     socket imsd stream 0660 system system
     user root
     group system radio net_raw inet net_admin
-
+	
 # Create carrier folder for HiddenMenu
 on post-fs
     mkdir /efs/carrier system system
@@ -145,6 +135,16 @@ on property:sys.boot_completed=1
 
 on property:security.semdaemonfinish=1
     stop sem_daemon
+
+# SIMLock Daemon
+on property:sys.mobicoredaemon.enable=true
+	start tsdaemon
+	service tsdaemon /system/bin/tsdaemon
+	class core
+	user system
+	group system
+        oneshot
+	disabled
 
 # SSWAP
 service swapon /sbin/sswap -s -f 2048

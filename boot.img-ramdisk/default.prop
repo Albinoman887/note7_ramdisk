@@ -12,14 +12,13 @@ persist.data.dpm.enable=true
 persist.data.dropssdp=false
 persist.data.ibfc.enable=true
 persist.radio.new.profid=true
-persist.radio.snapshot_enabled=1
-persist.radio.snapshot_timer=22
+telephony.lteOnCdmaDevice=0
 persist.eons.enabled=true
-telephony.lteOnCdmaDevice=1
 persist.security.ams.enforcing=3
 ro.secure=1
 ro.allow.mock.location=0
-ro.debuggable=1
+ro.debuggable=0
+ro.adb.secure=1
 ro.zygote=zygote64_32
 dalvik.vm.image-dex2oat-Xms=64m
 dalvik.vm.image-dex2oat-Xmx=64m
@@ -27,11 +26,11 @@ dalvik.vm.dex2oat-Xms=64m
 dalvik.vm.dex2oat-Xmx=512m
 ro.dalvik.vm.native.bridge=0
 debug.atrace.tags.enableflags=0
-persist.sys.usb.config=mtp,adb
+persist.sys.usb.config=mtp
 ro.smps.gain.spk=1.2
 #
 # BOOTIMAGE_BUILD_PROPERTIES
 #
-ro.bootimage.build.date=Thu Aug 11 16:58:43 KST 2016
-ro.bootimage.build.date.utc=1470902323
-ro.bootimage.build.fingerprint=samsung/graceqltespr/graceqltespr:6.0.1/MMB29M/N930PVPU1APH3:userdebug/test-keys
+ro.bootimage.build.date=Sat Jul 16 22:02:25 KST 2016
+ro.bootimage.build.date.utc=1468674145
+ro.bootimage.build.fingerprint=samsung/graceqltetmo/graceqltetmo:6.0.1/MMB29M/N930TUVU1APGC:user/test-keys
